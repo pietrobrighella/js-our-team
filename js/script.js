@@ -111,7 +111,6 @@ function btnAddTeam(){
 }
 
 function addTeamMembers(){
-    console.log('eccomi')
     const nomeHtml = document.getElementById('nome').value;
     const roleHtml = document.getElementById('role').value;
     const descHtml = document.getElementById('desc').value;
