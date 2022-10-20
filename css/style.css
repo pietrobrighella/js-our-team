@@ -1,0 +1,39 @@
+#wrapper {
+    padding: 80px 0;
+}
+
+.user-img {
+    margin-right: 50px;
+    margin-bottom: 20px;
+    filter: grayscale(1);
+}
+
+.user-img:hover {
+    filter: grayscale(0);
+    transition: 1s;
+    cursor: pointer;
+}
+
+.user-info {
+    padding-right: 40px;
+}
+
+.user-info i {
+    padding-top: 20px;
+    margin-bottom: 80px;
+}
+
+.user-info i:hover {
+    translate: 10px;
+    transition: 1s;
+    cursor: pointer;
+}
+
+.green {
+    color: rgb(0, 255, 110);
+}
+
+p {
+    color: rgb(165, 165, 165);
+    font-weight: 200;
+}
