@@ -1,5 +1,11 @@
+:root {
+    --green: rgb(0, 255, 110);
+    --darkblu: rgb(2, 11, 34);
+    --lightblu: rgb(120, 127, 146);
+}
+
 #wrapper {
-    padding: 80px 0;
+    padding-top: 80px;
 }
 
 .user-img {
@@ -30,10 +36,61 @@
 }
 
 .green {
-    color: rgb(0, 255, 110);
+    color: var(--green);
 }
 
 p {
-    color: rgb(165, 165, 165);
+    color: var(--lightblu);
     font-weight: 200;
+}
+
+h5 {
+    color: var(--darkblu);
+}
+
+#add-team {
+    bottom: 25px;
+    left: calc(100% - 85px);
+    width: 60px;
+    height: 60px;
+    font-size: 30px;
+    text-align: center;
+    line-height: 60px;
+    background-color: var(--green);
+    color: var(--darkblu);
+    cursor: pointer;
+}
+
+.add-team-box {
+    transform: scale(20);
+    transition: .6s;
+    color: var(--green) !important;
+}
+
+#add-team-form {
+    bottom: 55px;
+    left: calc(100% - 400px);
+    padding-right: 60px;
+    z-index: 9999;
+}
+
+h2 {
+    width: 95%;
+    font-size: 2.2rem;
+    font-weight: 900;
+}
+
+.form-control {
+    height: 55px;
+    line-height: 2.6rem;
+    border: 1px solid black;
+}
+
+#btn-add {
+    background-color: var(--darkblu);
+    color: white;
+}
+
+#btn-add:hover {
+    color: rgba(255, 255, 255, .4);
 }

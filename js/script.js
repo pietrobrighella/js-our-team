@@ -1,5 +1,4 @@
 // Creare un array di oggetti con informazioni
-
 const team = [
     {
         nome: 'Wayne Bernett',
@@ -39,6 +38,10 @@ const team = [
     },
 ]
 
+const wrapperHtml = document.getElementById('wrapper');
+const addTeamHtml = document.getElementById('add-team');
+const addTeam = document.getElementById('add-form');
+
 for(let key in team){
     console.log('Nome: ' + team[key].nome);
     console.log('Ruolo: ' + team[key].role);
@@ -46,8 +49,11 @@ for(let key in team){
     console.log('');
 }
 
-const wrapperHtml = document.getElementById('wrapper');
+createCard();
 
+addTeamHtml.addEventListener('click', btnAddTeam);
+
+/********* FUNZIONI *********/
 function createCard(){
     for(let key in team){
         let teamName = team[key].nome;
@@ -72,4 +78,59 @@ function createCard(){
     }
 }
 
-createCard();
+function btnAddTeam(){
+    addTeamHtml.classList.add('add-team-box');
+    const addTeamForm = document.createElement('div');
+    addTeamForm.setAttribute('id', 'add-team-form');
+    addTeamForm.classList = ('fixed-bottom');
+    addTeamForm.innerHTML = `
+    <h2 class="pb-3">Entra a far parte del nostro team</h2>
+    <div class="form-floating mb-2">
+        <input type="text" class="form-control" id="nome" placeholder="Inerisci nome e cognome">
+        <label for="nome">Inserisci il tuo nome e cognome</label>
+    </div>
+    <div class="form-floating mb-2">
+        <input type="text" class="form-control" id="role" placeholder="Qual &eacute; il tuo ruolo?">
+        <label for="role">Qual &eacute; il tuo ruolo?</label>
+    </div>
+    <div class="form-floating mb-2">
+        <input type="text" class="form-control" id="desc" placeholder="Raccontaci brevemente di te ...">
+        <label for="desc">Raccontaci brevemente di te ...</label>
+    </div>
+    <div class="mb-2">
+        <input type="file" class="form-control" id="photo">
+    </div>
+    <button id="btn-add" class="btn btn-lg w-100">Entra nel team</button>
+    `
+    setTimeout(() => {
+        addTeam.append(addTeamForm);
+        const btnAddHtml = document.getElementById('btn-add');
+        btnAddHtml.addEventListener('click', addTeamMembers);
+        addTeam.classList.remove('d-none');
+    }, 800);
+}
+
+function addTeamMembers(){
+    console.log('eccomi')
+    const nomeHtml = document.getElementById('nome').value;
+    const roleHtml = document.getElementById('role').value;
+    const descHtml = document.getElementById('desc').value;
+    const photoHtml = document.getElementById('photo').value;
+
+    const newMember = {
+        nome: nomeHtml,
+        role: roleHtml,
+        desc: descHtml,
+        image: photoHtml,
+    };  
+    team.push(newMember);
+
+    addTeamHtml.classList.remove('add-team-box');
+    addTeam.classList.add('d-none');
+
+    wrapperHtml.innerHTML = '';
+
+    createCard();
+};
+
+console.log(team);
