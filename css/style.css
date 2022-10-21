@@ -16,7 +16,8 @@
 
 .user-img:hover {
     filter: grayscale(0);
-    transition: 1s;
+    transform: scale(1.2) rotate(-10deg);
+    transition: .5s;
     cursor: pointer;
 }
 

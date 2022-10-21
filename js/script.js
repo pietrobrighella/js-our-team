@@ -128,6 +128,8 @@ function btnAddTeam(){
         addTeamHtml.classList.remove('add-team-box');
         addTeamForm.innerHTML = '';
     }
+
+    wrapperHtml.addEventListener('click', reset);
 }
 
 function addTeamMembers(){
