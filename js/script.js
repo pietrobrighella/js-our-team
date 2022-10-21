@@ -57,15 +57,29 @@ addTeamHtml.addEventListener('click', btnAddTeam);
 function createCard(){
     for(let key in team){
         let teamName = team[key].nome;
+        if(teamName == 0){
+            teamName = 'Pietro Brighella';
+        }
         let teamRole = team[key].role;
+        if(teamRole == 0){
+            teamRole = 'Marketer';
+        }
         let teamDesc = team[key].desc;
+        if(teamDesc == 0){
+            teamDesc = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. In molestias sapiente maxime dolores esse saepe iste perferendis quod, distinctio fuga, totam mollitia aliquam!';
+        }
         let teamImage = team[key].image;
+        if(teamImage == 0){
+                teamImage = `https://picsum.photos/400?random=${randomNumber(1,10)}`;
+            } else {
+                teamImage = './img/' + teamImage;
+            }
         const cardHtml = document.createElement('div');
         cardHtml.setAttribute('id', 'card');
         cardHtml.classList = ('d-flex flex-column flex-sm-row container m-auto align-items-start col-12 col-md-6');
         cardHtml.innerHTML = `
                 <div>
-                    <img src="./img/${teamImage}" alt="" class="rounded-circle user-img" width="180px" height="180px">
+                    <img src="${teamImage}" alt="" class="rounded-circle user-img" width="180px" height="180px">
                 </div>
                 <div class="user-info">
                     <h3 class="fs-4 fw-bold green">${teamName}</h3>
@@ -98,7 +112,7 @@ function btnAddTeam(){
         <label for="desc">Raccontaci brevemente di te ...</label>
     </div>
     <div class="mb-2">
-        <input type="file" class="form-control" id="photo">
+        <input type="file" class="form-control" id="photo" disabled>
     </div>
     <button id="btn-add" class="btn btn-lg w-100">Entra nel team</button>
     `
@@ -106,8 +120,14 @@ function btnAddTeam(){
         addTeam.append(addTeamForm);
         const btnAddHtml = document.getElementById('btn-add');
         btnAddHtml.addEventListener('click', addTeamMembers);
+        btnAddHtml.addEventListener('click', reset);
         addTeam.classList.remove('d-none');
     }, 800);
+
+    function reset(){
+        addTeamHtml.classList.remove('add-team-box');
+        addTeamForm.innerHTML = '';
+    }
 }
 
 function addTeamMembers(){
